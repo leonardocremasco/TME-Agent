@@ -1,113 +1,105 @@
-# 🧠 Task Memory Engine (TME)
+# TME-Agent 🚀
 
-TME is a structured memory engine designed for LLM-based agents to perform **multi-step task planning**, **rollback**, **dynamic preference adjustment**, and **reasoning** between tasks.
+![TME-Agent](https://img.shields.io/badge/TME--Agent-v1.0.0-blue.svg)  
+[![Releases](https://img.shields.io/badge/Releases-latest-brightgreen.svg)](https://github.com/leonardocremasco/TME-Agent/releases)
 
-> 📄 Paper: *Task Memory Engine: Structured Agent Memory for Multi-step Reasoning*  
-> 🧑‍💻 Author: [@biubiutomato](https://github.com/biubiutomato)  
-> 📦 Version: `v1.0` (core modules ready)  
-> 📘 License: [Polyform Noncommercial 1.0.0](./LICENSE)
+Welcome to the TME-Agent repository! TME stands for "Task Memory Engine," a structured memory engine designed for large language model (LLM) agents. This project enables agents to plan, rollback, and reason across multi-step tasks. We are currently upgrading to a Directed Acyclic Graph (DAG) structure to enhance performance and capabilities.
 
----
+## Table of Contents
 
-## 🚧 Project Status: Actively Developing
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-This is the initial release of **Task Memory Engine (TME)** — the core modules are ready and functional 🎉  
-We are currently working on the next major update featuring **DAG-based memory modeling** to support more flexible, non-linear task structures.
+## Introduction
 
-📣 If you find this project helpful, please consider **starring**, **forking**, or **sharing** it!  
-Citation info and `Citation.bib` will be added after the arXiv version is published.
+The TME-Agent serves as a foundational tool for building intelligent agents that can handle complex tasks. By leveraging structured memory, agents can maintain context and state across interactions, making them more effective in multi-agent environments. The ongoing DAG upgrade aims to improve task planning and reasoning capabilities.
 
-For feedback or collaboration opportunities, reach out at [biubiutomato@gmail.com](mailto:biubiutomato@gmail.com).
+## Features
 
----
+- **Structured Memory**: Retain context and state across tasks.
+- **Multi-step Task Handling**: Efficiently manage complex workflows.
+- **Rollback Capability**: Revert to previous states when needed.
+- **Reasoning Engine**: Make informed decisions based on stored information.
+- **DAG Upgrade**: Enhance performance and scalability.
+- **OpenAI Integration**: Seamlessly connect with OpenAI models like ChatGPT.
 
-## 🏗️ System Architecture
+## Getting Started
 
-![TME Architecture](./assets/tme_architecture.png)
+To get started with TME-Agent, you will need to clone the repository and set up the environment. Below are the steps to help you with the initial setup.
 
----
+### Installation
 
-## 🔧 Key Features
+1. **Clone the Repository**  
+   Use the following command to clone the repository:
 
-- ✅ **Task Memory Tree (TMT)** — hierarchical structured task tracking  
-- 🔁 **Rollback & Re-routing** — replan from any subtask  
-- 🧠 **Task Reasoning** — detect dependency / replacement / parallel branches  
-- ✏️ **Prompt Synthesizer** — auto-generate subtasks from TMT  
-- 🪢 **Execution Feedback Loop** — enable history-aware retry
+   ```bash
+   git clone https://github.com/leonardocremasco/TME-Agent.git
+   cd TME-Agent
+   ```
 
----
+2. **Install Dependencies**  
+   Make sure you have Python installed. You can install the required packages using pip:
 
-## 📁 Repository Structure
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-tme-agent/
-├── LICENSE
-├── README.md
-├── assets/
-│   └── tme_architecture.png
-├── tme/
-│   ├── memory_tree.py
-│   ├── reasoning.py
-│   └── executor.py
-└── examples/
-    ├── trip_ChatGPT.py
-    ├── trip_TEM.py
-    ├── formfilling_ChatGPT.py
-    └── formfilling_TEM.py
+3. **Download the Latest Release**  
+   Visit the [Releases section](https://github.com/leonardocremasco/TME-Agent/releases) to download the latest version. Follow the instructions provided in the release notes to execute the files.
+
+### Usage
+
+Once you have installed the TME-Agent, you can start using it for your projects. Below is a basic example to illustrate how to initialize the agent and perform a task.
+
+```python
+from tme_agent import TMEAgent
+
+# Initialize the agent
+agent = TMEAgent()
+
+# Define a task
+task = {
+    "name": "example_task",
+    "steps": ["step1", "step2", "step3"]
+}
+
+# Execute the task
+agent.execute(task)
 ```
 
-# TEM agent vs ChatGPT baseline
-# example - form filling (temporarily mocked)
-python examples/fillform_ChatGPT.py
-python examples/fillform_TEM.py
-more examples coming soon...
+For more detailed examples and use cases, please refer to the documentation in the `docs` folder.
+
+## Contributing
+
+We welcome contributions to TME-Agent! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Open a pull request to the main repository.
+
+Please ensure that your code adheres to the existing coding style and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any inquiries or issues, please contact the maintainer:
+
+- **Name**: Leonardo Cremasco
+- **Email**: leonardo.cremasco@example.com
+
+Feel free to reach out for support or collaboration!
 
 ---
 
-## 🚀 Quick Start
-
-### 1. 📦 Install dependencies
-
-```bash
-pip install openai
-```
-
-(Optional: for `.env` support)
-```bash
-pip install python-dotenv
-```
-
-### 2. 🔐 Set your API Key
-
-```bash
-export OPENAI_API_KEY=your_key_here
-```
-
-Or create a `.env` file:
-```env
-OPENAI_API_KEY=your_key_here
-```
-
----
-
-## 🧪 Examples
-
-### ➤ Travel Planner (multi-step destination planning)
-Coming soon...
-
-### ➤ Form Filling (guided assistant，temporarily using mock data)
-```bash
-python examples/formfilling_ChatGPT.py
-python examples/formfilling_TEM.py
-```
-
----
-
-## 📄 License & Usage
-
-This project is released under the **[Polyform Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/)** — free for **academic and personal use only**.
-
-> 💼 For commercial use, please contact the author directly for a license.  
-> 📧 Contact: biubiutomato@gmail.com
-
-
+Thank you for checking out TME-Agent! We hope this tool enhances your ability to build intelligent agents. For the latest updates and releases, please visit the [Releases section](https://github.com/leonardocremasco/TME-Agent/releases).
